@@ -72,7 +72,7 @@ $('#picture').on('pageinit', function() {
     alert('Failed because: ' + message);
 	};
 	
-	navigator.camera.getPicture(onSuccess, onError, { quality: 50 });
+	navigator.camera.getPicture(onSuccess, onError, { quality: 50, destinationType: Camera.DestinationType.DATA_URL});
 
 
 	
@@ -80,21 +80,22 @@ $('#picture').on('pageinit', function() {
 }); // end picture pageinit
 
 
-$('#accel').on('pageinit', function() {
+$('#connection').on('pageinit', function() {
 	
-         var onSuccess=function (acceleration) {
-			alert('Acceleration X: ' + acceleration.x + '\n' +
-          'Acceleration Y: ' + acceleration.y + '\n' +
-          'Acceleration Z: ' + acceleration.z + '\n' +
-          'Timestamp: '      + acceleration.timestamp + '\n');
-			};
+         var networkState = navigator.connection.type;
 
-			var onError= function () {
-			alert('onError!');
-			};
+            var states = {};
+            states[Connection.UNKNOWN]  = 'an Unknown connection';
+            states[Connection.ETHERNET] = 'Ethernet ';
+            states[Connection.WIFI]     = 'WiFi ';
+            states[Connection.CELL_2G]  = 'Cell 2G';
+            states[Connection.CELL_3G]  = 'Cell 3G ';
+            states[Connection.CELL_4G]  = 'Cell 4G ';
+            states[Connection.CELL]     = 'Cell generic connection';
+            states[Connection.NONE]     = 'No network connection';
 
-			navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
-    
+            $("#connectionoutput").html ("<p> You're currently connected through: </p><br><h2>"+ states[networkState] +
+							  "</h2>");
 	
 }); // end browser pageinit
 
