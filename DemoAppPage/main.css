@@ -1,0 +1,159 @@
+@charset "UTF-8";
+
+body {
+	font-family: 'Oxygen', sans-serif;
+	font-size: 14px;
+	background-attachment: fixed;
+	background-image: url(images/IMG_6346.JPG);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-color:rgba(0,0,0,1);
+}
+
+ul{
+	list-style:none;
+	padding: 0px;
+}
+
+h1{
+	font-family: 'Audiowide', cursive;
+	font-size: 48px;
+	line-height: 30px;
+	color: white;
+	text-shadow: 1px 1px 6px rgba(0,0,0,1);
+}
+
+h2{
+	font-family: 'Audiowide', cursive;
+	font-size:20px;
+	line-height: 20px;
+	padding-left: 100px;
+	text-shadow: 1px 1px 6px rgba(0,0,0,1);
+	color: white;
+}
+
+h3{
+	font-family: 'Audiowide', cursive;
+	font-size:30px;
+	line-height: 30px;
+	
+	
+}
+.container {
+	
+	height: auto;
+	width: 90%;
+	margin-left:5%;
+	margin-right:5%;
+	
+}
+.header {
+	
+	height: 100px;
+	width: 870px;
+	padding: 15px;
+}
+
+.leftcol {
+	background:rgba(204,204,204,.9);
+	height: 600px;
+	width: 380px;
+	float: left;
+	padding: 20px;
+	margin-top: 20px;
+	margin-left: 5%;
+	border-top-left-radius: 15px;	
+	border-width: 5px;
+	border-style:solid;
+	border-color: black;
+	text-align:center;
+}
+.rightcol {
+	background:rgba(204,204,204,.9);
+	height: 600px;
+	width: 380px;
+	float: right;
+	padding: 20px;
+	margin-top: 20px;
+	margin-right: 5%;
+	border-top-right-radius: 15px;
+	border-width: 5px;
+	border-style:solid;
+	border-color: black;
+	text-align:center;
+}
+.footer {
+	background:rgba(204,204,204,.9);
+	height: 80px;
+	width: 835px;
+	padding: 20px;
+	margin: 10px;
+	border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	border-width: 5px;
+	border-style:solid;
+	border-color: black;
+	
+}
+
+.icon_left{
+	width: 100px;
+	height: 100px;
+	float: left;
+	margin-left: 60px;
+	margin-bottom: 20px;
+	border:solid;
+	border-width: 2px;
+}
+
+
+.icon {
+	width: 100px;
+	height: 100px;
+	border: rgba(0,0,0,1);
+	border-style: solid;
+	margin-left: auto;
+	margin-right: auto;		
+	
+	
+}
+
+.icon_right {
+	width: 100px;
+	height: 100px;
+	float: right;
+	margin-right: 60px;
+	border:solid;
+	border-width: 2px;
+}
+
+.icon_selected_left{
+	width: 100px;
+	height: 100px;
+	border: rgba(0,0,0,1);
+	border-style: double;
+	float: left;
+	margin-left: 20px;
+}
+.icon_selected{
+	width: 100px;
+	height: 100px;
+	border: rgba(0,0,0,1);
+	border-style: double;
+	margin: 0 auto;
+	
+}
+
+.icon_selected_right{
+	width: 100px;
+	height: 100px;
+	border: rgba(0,0,0,1);
+	border-style: double;
+	float: right;
+	margin-right: 20px;
+}
+
+.clear {
+	clear: both;	 
+	
+}
