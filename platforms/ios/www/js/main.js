@@ -2,20 +2,12 @@
 // AVF 1308
 
 document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {
-	$("#instagramBTN").on("click", instagramFn);
-	
-	
-	
-	
-	
-} //end device ready
 
-
-
+//Device Functions----------------------
 
 var instagramFn = function(){
-	
+	event.preventDefault();
+	$("#data-msg").show();
 	var screenOutput = function(info){
 		//alert('screenOutput');
 		//console.log(info);
@@ -31,12 +23,10 @@ var instagramFn = function(){
 	var url = "https://api.instagram.com/v1/tags/" + tag + "/media/recent?callback=?&amp;client_id=ceb5afc4977048d6a656adbaf27faf0f";
 	$.getJSON(url, screenOutput);
     
-
 }; // end instagram Fn
 
 
-
-$('#weather').on('pageinit', function() {
+var weatherFn = function(){
       $.ajax({
          url: "http://api.aerisapi.com/observations/detroit,mi?client_id=HmXQEuv3ZDpbeRZFPUndB&client_secret=uvWYhEp1fK0XVaGPGQfkfAmq5ajx4OMcGVhMz7Vo",
          dataType: "jsonp",
@@ -51,10 +41,10 @@ $('#weather').on('pageinit', function() {
             }
          }
       });
-});// end weather pageinit
+};// end weather Fn
 
 
-$('#location').on('pageinit', function() {
+var locationFn = function(){
 	
 	var geolocationSuccess=function (position){
 		$('#geolocationdata').prepend('<p>Your current latitude is: ' + position.coords.latitude +
@@ -74,10 +64,10 @@ $('#location').on('pageinit', function() {
 	
 	navigator.geolocation.getCurrentPosition(geolocationSuccess,geolocationError);
 
-}); // end location pageinit
+}; // end location pageinit
 
 
-$('#picture').on('pageinit', function() {
+var pictureFn = function(){
 	
 
  /*var onSuccess = function(imageData) {
@@ -113,10 +103,10 @@ $('#picture').on('pageinit', function() {
 		saveToPhotoAlbum: true});
 	
 
-}); // end picture pageinit
+}; // end picture pageinit
 
 
-$('#connection').on('pageinit', function() {
+var connectionFn = function(){
 	
          var networkState = navigator.connection.type;
 
@@ -133,14 +123,27 @@ $('#connection').on('pageinit', function() {
             $("#connectionoutput").html ("<p> You're currently connected through: </p><br><h2>"+ states[networkState] +
 							  "</h2>");
 	
-}); // end browser pageinit
+}; // end browser pageinit
 
 
-$('#device').on('pageinit', function() {
+var deviceFn = function(){
 	
         $("#deviceinfo").html ('<p> Your Device Name Is: </p><br><h2>'+ device.name +
 							  '</h2><br><p>Your Device UUID Is: </p><br><h2>' + device.uuid + '</h2>');
     
 	
-}); // end device pageinit
+}; // end device pageinit
 
+
+
+//--------------------------------
+
+function onDeviceReady() {
+	$("#instagramBTN").on("click", instagramFn);
+	$('#weather').on('pageinit', weatherFn);
+	$('#location').on('pageinit', locationFn);
+	$('#pictureBTN').on('click', pictureFn);
+	$('#connection').on('pageinit', connectionFn);
+	$('#device').on('pageinit', deviceFn);
+	
+} //end device ready
