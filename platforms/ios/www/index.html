@@ -217,18 +217,18 @@
 		
 		
 <!-- Picture MASH Page -->
-		<div data-role="page" id="picturemasg" >
+		<div data-role="page" id="picturemash" >
         	<div data-role="header" data-position="fixed" >
 				<h1> <a href="index.html">AVF App</a></h1>
 			</div>
 			
 			 <div data-role="content">
 				
-                <canvas id=ÓcanvasPnlÓ>
-				<img style="display:none;" id=" tempImg " src="" />
+                <canvas id="canvasPnl"></canvas>
+				<img style="display:none;" id="tempImg" src="" />
 				<img style="display:none;width:80%;height:80%;" id="taggedImage" src="" />
-				<button onclick=" captureCameraPic ();">Capture Camera Pic</button> <br>
-				<button onclick="save();">Save</button> <br>
+				<button id="captureCameraPic">Capture Camera Pic</button> <br>
+				<button id="savePic">Save</button> <br>
             
                 
 			</div>

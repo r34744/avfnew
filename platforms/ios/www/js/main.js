@@ -134,9 +134,48 @@ var deviceFn = function(){
 	
 }; // end device pageinit
 
+//============Camera Mash=================
 
+var drawCanvas = function (latitude, longitude) {
+      var canvas = document.getElementById("canvasPnl");
+      var context = canvas.getContext('2d');
+      var locationtxt = "Latitude: " + latitude + ", Longitude: " + longitude;
+      context.fillText(locationtxt, 0, 0);
+}
 
-//--------------------------------
+var onGeoSuccess = function (position){
+	drawCanvas(position.coords.latitude, position.coords.longitude);
+	var dataURL = canvas.toDataURL();
+	var image = getElementById(taggedImage);
+	image.src = dataURL;
+	image.style.display = "block";
+	//saveToPhotoAlbum: true;
+}
+
+var onCameraPicError = function  (errMsg) {
+    alert("Error capturing picture: " + errMsg);
+}
+
+var onGeoError = function (errMsg) {
+    alert("Error retrieving location information: " + errMsg);
+}
+
+var onCameraPicSuccess = function (imgData){
+	document.getElementById(tempImg).src = "data:image/jpeg;base64," + imgData;
+	navigator.geolocation.getCurrentPosition(onGeoSuccess,onGeoError)
+}
+ 
+var captureCameraPicFn = function(){
+	destinationType=navigator.camera.DestinationType;
+	navigator.camera.getPicture(onCameraPicSuccess, onCameraPicError, { quality: 80,
+    destinationType: destinationType.DATA_URL });
+} 
+  
+var savePicFn = function(){
+	saveToPhotoAlbum: true;
+}
+
+//=================end camera mash
 
 function onDeviceReady() {
 	$("#instagramBTN").on("click", instagramFn);
@@ -145,5 +184,7 @@ function onDeviceReady() {
 	$('#pictureBTN').on('click', pictureFn);
 	$('#connection').on('pageinit', connectionFn);
 	$('#device').on('pageinit', deviceFn);
+	$('#captureCameraPic').on('click', captureCameraPicFn);
+	$('#savePic').on('click', savePicFn);
 	
 } //end device ready
