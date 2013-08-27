@@ -1,6 +1,5 @@
 // Gregory Koenig
 // AVF 1308
-
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
 	$("#instagramBTN").on("click", instagramFn);
