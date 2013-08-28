@@ -68,14 +68,7 @@ var locationFn = function(){
 
 
 var pictureFn = function(){
-	
 
- /*var onSuccess = function(imageData) {
-		var image = document.getElementById('myImage');
-		image.src = "data:image/jpeg;base64," + imageData;
-		image.style.display = "block";
-		
-	};*/
 	
 	var onSuccess = function(imageData) {
 		var image = document.getElementById('myImage');
@@ -88,9 +81,7 @@ var pictureFn = function(){
     alert('Failed because: ' + message);
 	};
 	
-	/*navigator.camera.getPicture(onSuccess, onError, {
-		quality: 50, destinationType: Camera.DestinationType.DATA_URL});*/
-
+	
 	navigator.camera.getPicture(onSuccess, onError, {
 		quality : 50, 
           destinationType : Camera.DestinationType.FILE_URI, 
@@ -136,44 +127,73 @@ var deviceFn = function(){
 
 //============Camera Mash=================
 
+var captureCameraPicFn = function(){
+
+
 var drawCanvas = function (latitude, longitude) {
       var canvas = document.getElementById("canvasPnl");
-      var context = canvas.getContext('2d');
+      var context = canvas.getContext("2d");
       var locationtxt = "Latitude: " + latitude + ", Longitude: " + longitude;
-      context.fillText(locationtxt, 0, 0);
-}
+    context.font = "24px 'Tahoma'";
+    context.fillStyle = "rgba(0,0,0,0.5)";
+    context.fillText(locationtxt, 0, 0);
+};
 
 var onGeoSuccess = function (position){
-	drawCanvas(position.coords.latitude, position.coords.longitude);
-	var dataURL = canvas.toDataURL();
-	var image = getElementById(taggedImage);
-	image.src = dataURL;
-	image.style.display = "block";
-	//saveToPhotoAlbum: true;
-}
+	var canvas = document.getElementById("canvasPnl");
+    var context = canvas.getContext("2d");
+    var lattext = "Latitude:";
+    var longtext = "Longitude:";
+    var latlocationtxt = position.coords.latitude;
+    var longlocationtxt = position.coords.longitude;
+    context.font = '200px "Arial"';
+    context.fillStyle = "rgba(0,0,0,0.5)";
+    context.fillText(lattext, 400, 50);
+    context.fillText(latlocationtxt, 200, 200);
+    context.fillText(longtext, 400, 50);
+    context.fillText(longlocationtxt, 200, 400);
+	
+};
 
 var onCameraPicError = function  (errMsg) {
     alert("Error capturing picture: " + errMsg);
-}
+};
 
 var onGeoError = function (errMsg) {
     alert("Error retrieving location information: " + errMsg);
-}
+};
 
-var onCameraPicSuccess = function (imgData){
-	document.getElementById(tempImg).src = "data:image/jpeg;base64," + imgData;
-	navigator.geolocation.getCurrentPosition(onGeoSuccess,onGeoError)
-}
- 
-var captureCameraPicFn = function(){
-	destinationType=navigator.camera.DestinationType;
-	navigator.camera.getPicture(onCameraPicSuccess, onCameraPicError, { quality: 80,
-    destinationType: destinationType.DATA_URL });
-} 
+var onCameraPicSuccess = function(imageData) {
+	var canvas = document.getElementById("canvasPnl");
+      var context = canvas.getContext("2d");
+    canvas.style.display = "block";
+    var img= new Image();
+    img.src = imageData;
+    img.onload = function(){
+        canvas.width = img.width;
+        canvas.height = img.height;
+        context.drawImage(img, 0, 0, img.width, img.height);
+       context.font = '200px "Arial"';
+        context.fillText("hello", 400, 50);
+        navigator.geolocation.getCurrentPosition(onGeoSuccess,onGeoError);
+    };   
+    
+};
+       
+
+    navigator.camera.getPicture(onCameraPicSuccess, onCameraPicError, {
+		quality : 80, 
+          destinationType : Camera.DestinationType.FILE_URI, 
+          sourceType : Camera.PictureSourceType.CAMERA, 
+          allowEdit : false,
+          encodingType: Camera.EncodingType.JPEG,
+          popoverOptions: CameraPopoverOptions
+		});
+}; 
   
-var savePicFn = function(){
-	saveToPhotoAlbum: true;
-}
+
+
+
 
 //=================end camera mash
 
