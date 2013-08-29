@@ -5,18 +5,18 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 //Device Functions----------------------
 
-var instagramFn = function(){
+var instagramFn = function () {
 	event.preventDefault();
 	$("#data-msg").show();
-	var screenOutput = function(info){
+	var screenOutput = function (info) {
 		//alert('screenOutput');
 		//console.log(info);
 		$("#data-msg").html('<h2> LookThruMyEyes Tags</h2>');
-			$.each(info.data, function(index, photo){
+		$.each(info.data, function (index, photo) {
 			var pic = "<li><img src='" + photo.images.standard_resolution.url + "'alt='" + photo.user.id + "' /><h4>" + photo.user.username + "</h4></li>";
 			
 			$("#data-output").append(pic);
-			}); //end each
+        }); //end each
 	}; //end screenOutput
 	
 	var tag = "lookthrumyeyes";
@@ -26,11 +26,12 @@ var instagramFn = function(){
 }; // end instagram Fn
 
 
-var weatherFn = function(){
-      $.ajax({
-         url: "http://api.aerisapi.com/observations/detroit,mi?client_id=HmXQEuv3ZDpbeRZFPUndB&client_secret=uvWYhEp1fK0XVaGPGQfkfAmq5ajx4OMcGVhMz7Vo",
-         dataType: "jsonp",
-         success: function(json) {
+var weatherFn = function () {
+    $.ajax({
+         //url: "http://api.aerisapi.com/observations/detroit,mi?client_id=HmXQEuv3ZDpbeRZFPUndB&client_secret=uvWYhEp1fK0XVaGPGQfkfAmq5ajx4OMcGVhMz7Vo",
+        url: "http://api.aerisapi.com/observations/42.6723,-83.628407?client_id=HmXQEuv3ZDpbeRZFPUndB&client_secret=uvWYhEp1fK0XVaGPGQfkfAmq5ajx4OMcGVhMz7Vo", 
+        dataType: "jsonp",
+         success: function (json) {
             if (json.success === true) {
                var ob = json.response.ob;
                $('#weatheroutput').html('<h2>The current weather in Detroit is </h2><br><h1>' + ob.weather.toLowerCase() +
@@ -44,7 +45,7 @@ var weatherFn = function(){
 };// end weather Fn
 
 
-var locationFn = function(){
+var locationFn = function () {
 	
 	var geolocationSuccess=function (position){
 		$('#geolocationdata').prepend('<p>Your current latitude is: ' + position.coords.latitude +
@@ -58,7 +59,7 @@ var locationFn = function(){
 		"," + position.coords.longitude + "&sensor=false";
 	};
 	
-	var geolocationError = function(){
+	var geolocationError = function () {
 		alert(error.code + '/n' + error.message);
 	};
 	
@@ -67,17 +68,17 @@ var locationFn = function(){
 }; // end location pageinit
 
 
-var pictureFn = function(){
+var pictureFn = function () {
 
 	
-	var onSuccess = function(imageData) {
+	var onSuccess = function (imageData) {
 		var image = document.getElementById('myImage');
 		image.src = imageData;
 		image.style.display = "block";
-		
+		alert("Image Saved to the Camera Album");
 	};
 
-	var onError = function(message){
+	var onError = function (message) {
     alert('Failed because: ' + message);
 	};
 	
@@ -97,7 +98,7 @@ var pictureFn = function(){
 }; // end picture pageinit
 
 
-var connectionFn = function(){
+var connectionFn = function () {
 	
          var networkState = navigator.connection.type;
 
@@ -117,7 +118,7 @@ var connectionFn = function(){
 }; // end browser pageinit
 
 
-var deviceFn = function(){
+var deviceFn = function () {
 	
         $("#deviceinfo").html ('<p> Your Device Name Is: </p><br><h2>'+ device.name +
 							  '</h2><br><p>Your Device UUID Is: </p><br><h2>' + device.uuid + '</h2>');
@@ -127,17 +128,7 @@ var deviceFn = function(){
 
 //============Camera Mash=================
 
-var captureCameraPicFn = function(){
-
-
-var drawCanvas = function (latitude, longitude) {
-      var canvas = document.getElementById("canvasPnl");
-      var context = canvas.getContext("2d");
-      var locationtxt = "Latitude: " + latitude + ", Longitude: " + longitude;
-    context.font = "24px 'Tahoma'";
-    context.fillStyle = "rgba(0,0,0,0.5)";
-    context.fillText(locationtxt, 0, 0);
-};
+var captureCameraPicFn = function () {
 
 var onGeoSuccess = function (position){
 	var canvas = document.getElementById("canvasPnl");
@@ -146,16 +137,20 @@ var onGeoSuccess = function (position){
     var longtext = "Longitude:";
     var latlocationtxt = position.coords.latitude;
     var longlocationtxt = position.coords.longitude;
-    context.font = '200px "Arial"';
-    context.fillStyle = "rgba(0,0,0,0.5)";
-    context.fillText(lattext, 400, 50);
-    context.fillText(latlocationtxt, 200, 200);
-    context.fillText(longtext, 400, 50);
-    context.fillText(longlocationtxt, 200, 400);
-	
+    context.textAlign = "left";
+    context.fillStyle = "rgba(0,0,0,0.3)";
+    context.font = '70px "Arial"';
+    context.fillText(lattext, 30, 725);
+    context.font = '100px "Arial"';
+    context.fillText(latlocationtxt, 30, 800);
+    context.font = '70px "Arial"';
+    context.fillText(longtext, 30, 875);
+    context.font = '100px "Arial"';
+    context.fillText(longlocationtxt, 30, 950);
+    
 };
 
-var onCameraPicError = function  (errMsg) {
+var onCameraPicError = function (errMsg) {
     alert("Error capturing picture: " + errMsg);
 };
 
@@ -163,18 +158,18 @@ var onGeoError = function (errMsg) {
     alert("Error retrieving location information: " + errMsg);
 };
 
-var onCameraPicSuccess = function(imageData) {
+var onCameraPicSuccess = function (imageData) {
 	var canvas = document.getElementById("canvasPnl");
       var context = canvas.getContext("2d");
     canvas.style.display = "block";
     var img= new Image();
     img.src = imageData;
-    img.onload = function(){
+    img.onload = function () {
         canvas.width = img.width;
         canvas.height = img.height;
         context.drawImage(img, 0, 0, img.width, img.height);
        context.font = '200px "Arial"';
-        context.fillText("hello", 400, 50);
+        //context.fillText("hello", 400, 50);
         navigator.geolocation.getCurrentPosition(onGeoSuccess,onGeoError);
     };   
     
@@ -191,8 +186,19 @@ var onCameraPicSuccess = function(imageData) {
 		});
 }; 
   
-
-
+var savePicFn = function () {
+    var canvas = document.getElementById("canvasPnl");
+    window.canvas2ImagePlugin.saveImageDataToLibrary(
+        function(msg){
+            cnosole.log(msg);
+        },
+        function(err){
+            console.log(err);
+        },
+        document.getElementById("canvasPnl")
+        );
+    alert("Image Saved to the Camera Album");
+};
 
 
 //=================end camera mash

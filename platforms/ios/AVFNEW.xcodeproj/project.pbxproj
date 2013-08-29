@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0998B1C3A6EC45F19F6F011E /* CDVJpegHeaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D4667C3D02434A54AB446C59 /* CDVJpegHeaderWriter.m */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
@@ -61,6 +60,7 @@
 		E66C43C5B32C4A1290041492 /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 44330AB9A82849B186E958BD /* CDVFile.m */; };
 		EB74A5A953964490B8491EFB /* CDVReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4C0C3435C44B0D83A5D95E /* CDVReachability.m */; };
 		F840E1F1165FE0F500CFE078 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = F840E1F0165FE0F500CFE078 /* config.xml */; };
+		F399326911604CF99D375DA2 /* Canvas2ImagePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F2EB2B0214F99BCD8E4FF /* Canvas2ImagePlugin.m */; settings = {COMPILER_FLAGS = -fno-objc-arc; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +157,8 @@
 		F7C726801F6A436D97D22E82 /* CDVNotification.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CDVNotification.bundle; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = AVFNEW/config.xml; sourceTree = "<group>"; };
 		FAA3E13ECAEC48988A1FF178 /* CDVLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVLogger.h; path = org.apache.cordova.core.console/CDVLogger.h; sourceTree = "<group>"; };
+		906F2EB2B0214F99BCD8E4FF /* Canvas2ImagePlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Canvas2ImagePlugin.m"; path = "org.devgeeks.Canvas2ImagePlugin/Canvas2ImagePlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		A779843D4F1B4DDE8044A0FE /* Canvas2ImagePlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Canvas2ImagePlugin.h"; path = "org.devgeeks.Canvas2ImagePlugin/Canvas2ImagePlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +335,8 @@
 				544AFEBD314945A383999977 /* CDVInAppBrowser.h */,
 				1CF4645C4021493F96EE7059 /* CDVLogger.m */,
 				FAA3E13ECAEC48988A1FF178 /* CDVLogger.h */,
+				906F2EB2B0214F99BCD8E4FF /* Canvas2ImagePlugin.m */,
+				A779843D4F1B4DDE8044A0FE /* Canvas2ImagePlugin.h */,
 			);
 			name = Plugins;
 			path = AVFNEW/Plugins;
@@ -407,7 +411,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 460;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "AVFNEW" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -516,6 +520,7 @@
 				3BDF8E982CAF44868252786A /* CDVSplashScreen.m in Sources */,
 				79680A3B504142178F0648B3 /* CDVInAppBrowser.m in Sources */,
 				64E98D29997849BDB88BAD9D /* CDVLogger.m in Sources */,
+				F399326911604CF99D375DA2 /* Canvas2ImagePlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
