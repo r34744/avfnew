@@ -11,7 +11,7 @@ var instagramFn = function () {
 	var screenOutput = function (info) {
 		//alert('screenOutput');
 		//console.log(info);
-		$("#data-msg").html('<h2> LookThruMyEyes Tags</h2>');
+		$("#data-msg").html('<h2>Images with a tag of "The Ramones"</h2>');
 		$.each(info.data, function (index, photo) {
 			var pic = "<li><img src='" + photo.images.standard_resolution.url + "'alt='" + photo.user.id + "' /><h4>" + photo.user.username + "</h4></li>";
 			
@@ -19,7 +19,7 @@ var instagramFn = function () {
         }); //end each
 	}; //end screenOutput
 	
-	var tag = "lookthrumyeyes";
+	var tag = "theramones";
 	var url = "https://api.instagram.com/v1/tags/" + tag + "/media/recent?callback=?&amp;client_id=ceb5afc4977048d6a656adbaf27faf0f";
 	$.getJSON(url, screenOutput);
     
@@ -28,7 +28,7 @@ var instagramFn = function () {
 
 var weatherFn = function () {
     $.ajax({
-         //url: "http://api.aerisapi.com/observations/detroit,mi?client_id=HmXQEuv3ZDpbeRZFPUndB&client_secret=uvWYhEp1fK0XVaGPGQfkfAmq5ajx4OMcGVhMz7Vo",
+         
         url: "http://api.aerisapi.com/observations/42.6723,-83.628407?client_id=HmXQEuv3ZDpbeRZFPUndB&client_secret=uvWYhEp1fK0XVaGPGQfkfAmq5ajx4OMcGVhMz7Vo", 
         dataType: "jsonp",
          success: function (json) {
@@ -285,6 +285,59 @@ var saveWeatherPicFn = function () {
 
 //=================end weather picture mash
 
+
+var instagramMashFn = function () {
+	   
+    var igeolocationSuccess = function (position){
+	       var ilatlocationtxt = position.coords.latitude;
+           var ilonglocationtxt = position.coords.longitude;
+    
+            $.ajax({
+            url: "http://api.aerisapi.com/observations/" + ilatlocationtxt + "," + ilonglocationtxt + "?client_id=HmXQEuv3ZDpbeRZFPUndB&client_secret=uvWYhEp1fK0XVaGPGQfkfAmq5ajx4OMcGVhMz7Vo", 
+            dataType: "jsonp",
+            success: function (json) {
+                if (json.success === true) {
+                    var ob = json.response.ob;
+                    var localweather = ob.weather.toLowerCase();
+                    var LWhashtag = localweather.replace(/ /g,'');
+                    $("#idata-msg").show();
+	               var iscreenOutput = function (info) {
+		                  $("#idata-msg").html('<h2> Photos like your current weather of ' + localweather + '...</h2>');
+		                  $.each(info.data, function (index, photo) {
+			             var pic = "<li><img src='" + photo.images.standard_resolution.url + "'alt='" + photo.user.id + "' /><h4>" + photo.user.username + "</h4></li>";
+			
+			             $("#idata-output").append(pic);
+                        }); //end each
+	               }; //end screenOutput
+	
+	               var itag = LWhashtag;
+	               var iurl = "https://api.instagram.com/v1/tags/" + itag + "/media/recent?callback=?&amp;client_id=ceb5afc4977048d6a656adbaf27faf0f";
+	               $.getJSON(iurl, iscreenOutput);
+                }
+                else {
+                    alert('An error occurred: ' + json.error.description);
+                }
+                }
+            });
+       
+    }; //end igeolocationSuccess
+    
+    
+    var igeolocationError = function (errMsg) {
+    alert("Error retrieving location information: " + errMsg);
+    };
+    
+
+   navigator.geolocation.getCurrentPosition(igeolocationSuccess,igeolocationError);
+    
+    
+    
+    
+}; // end instagram weather mash lookup
+
+
+
+
 function onDeviceReady() {
 	$("#instagramBTN").on("click", instagramFn);
 	$('#weather').on('pageinit', weatherFn);
@@ -296,5 +349,6 @@ function onDeviceReady() {
 	$('#savePic').on('click', savePicFn);
     $('#captureWeatherPic').on('click', captureWeatherPicFn);
 	$('#saveWeatherPic').on('click', saveWeatherPicFn);
-	
+	$("#instagramMashBTN").on("click", instagramMashFn);
+    
 } //end device ready

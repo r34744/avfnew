@@ -51,7 +51,7 @@ img {
 	margin: 0 auto;
 }
 
-#geolocationdata, #connectionoutput, #devicewindow, #weatheroutput{
+#geolocationdata, #connectionoutput, #devicewindow, #weatheroutput, #instagramMashContent, #instagramcontain, #picturecontain, #mashWeatherText, #mashPicText{
 	margin-left: 10%;
 	width: 70%;
 	height: auto;
