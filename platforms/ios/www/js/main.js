@@ -200,8 +200,90 @@ var savePicFn = function () {
     alert("Image Saved to the Camera Album");
 };
 
-
 //=================end camera mash
+
+//============Weather Picture Mash=================
+
+var captureWeatherPicFn = function () {
+
+    
+var onWeatherGeoSuccess = function (position){
+	var canvas = document.getElementById("canvasPn2");
+    var context = canvas.getContext("2d");
+    var latlocationtxt = position.coords.latitude;
+    var longlocationtxt = position.coords.longitude;
+    
+            $.ajax({
+            url: "http://api.aerisapi.com/observations/" + latlocationtxt + "," + longlocationtxt + "?client_id=HmXQEuv3ZDpbeRZFPUndB&client_secret=uvWYhEp1fK0XVaGPGQfkfAmq5ajx4OMcGVhMz7Vo", 
+            dataType: "jsonp",
+            success: function (json) {
+                if (json.success === true) {
+                    var ob = json.response.ob;
+                    context.textAlign = "left";
+                    context.fillStyle = "rgba(0,0,0,0.3)";
+                    context.font = '200px "Arial"';
+                    context.fillText(ob.tempF + '°', 20, 300);
+                }
+                else {
+                    alert('An error occurred: ' + json.error.description);
+                }
+                }
+            });
+       
+}; //end onWeatherGeoSuccess
+
+var onWeatherCameraPicError = function (errMsg) {
+    alert("Error capturing picture: " + errMsg);
+};
+
+var onWeatherGeoError = function (errMsg) {
+    alert("Error retrieving location information: " + errMsg);
+};
+
+var onWeatherCameraPicSuccess = function (imageData) {
+	var canvas = document.getElementById("canvasPn2");
+    var context = canvas.getContext("2d");
+    canvas.style.display = "block";
+    var img= new Image();
+    img.src = imageData;
+    img.onload = function () {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        context.drawImage(img, 0, 0, img.width, img.height);
+       context.font = '200px "Arial"';
+        //context.fillText("hello", 400, 50);
+        navigator.geolocation.getCurrentPosition(onWeatherGeoSuccess,onWeatherGeoError);
+    };   
+    
+};
+       
+
+    navigator.camera.getPicture(onWeatherCameraPicSuccess, onWeatherCameraPicError, {
+		quality : 80, 
+          destinationType : Camera.DestinationType.FILE_URI, 
+          sourceType : Camera.PictureSourceType.CAMERA, 
+          allowEdit : false,
+          encodingType: Camera.EncodingType.JPEG,
+          popoverOptions: CameraPopoverOptions
+		});
+}; 
+  
+var saveWeatherPicFn = function () {
+    var canvas = document.getElementById("canvasPn2");
+    window.canvas2ImagePlugin.saveImageDataToLibrary(
+        function(msg){
+            cnosole.log(msg);
+        },
+        function(err){
+            console.log(err);
+        },
+        document.getElementById("canvasPn2")
+        );
+    alert("Image Saved to the Camera Album");
+};
+
+
+//=================end weather picture mash
 
 function onDeviceReady() {
 	$("#instagramBTN").on("click", instagramFn);
@@ -212,5 +294,7 @@ function onDeviceReady() {
 	$('#device').on('pageinit', deviceFn);
 	$('#captureCameraPic').on('click', captureCameraPicFn);
 	$('#savePic').on('click', savePicFn);
+    $('#captureWeatherPic').on('click', captureWeatherPicFn);
+	$('#saveWeatherPic').on('click', saveWeatherPicFn);
 	
 } //end device ready
