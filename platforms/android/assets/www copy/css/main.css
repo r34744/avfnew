@@ -1,0 +1,67 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	font-family: 'Oxygen', sans-serif;
+	font-size: 14px;
+}
+
+h1{
+	font-family: 'Audiowide', cursive;
+	font-size: 48px;
+	line-height: 30px;
+}
+
+h2{
+	font-family: 'Audiowide', cursive;
+	font-size: 24px;
+	line-height: 24px;
+}
+
+h4{
+	font-family: 'Oxygen', sans-serif;
+	font-size: 12px;
+	line-height: 12px;
+	
+}
+
+ul { 
+	width: 90%; 
+	list-style: none; 
+	line-height: normal; 
+}
+	
+li { 
+	float: left; 
+	width: 27%;
+	padding: 1%;
+	box-shadow: 5px 5px 5px black;
+	margin: 5px;
+}
+
+li img{
+	width: 100%;
+	height: auto;
+	
+}
+
+
+img {
+	text-align: center;
+	margin: 0 auto;
+}
+
+#geolocationdata, #connectionoutput, #devicewindow, #weatheroutput{
+	margin-left: 10%;
+	width: 70%;
+	height: auto;
+	margin-right: 10%;
+	border:solid;
+	border-width: 2px;
+	border-radius: 15px;
+	box-shadow: 5px 5px 5px black;
+	background: white;
+	padding: 5%;
+	text-align:center;
+}
+

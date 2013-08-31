@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<! -- Greg Koenig, AVF 1308-->
+
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <link href='http://fonts.googleapis.com/css?family=Audiowide|Oxygen:400,300,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/style.css"/>
+		<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.3.1.css" />
+		
+		<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
+		<!--<script src="js/libs/modernizr.custom.min.js"></script>-->
+	
+        <title>AVF App</title>
+        
+    </head>
+    
+    
+    <body>
+<!-- Page1	MAIN -->
+		<div data-role="page" id="main" >
+        	<div data-role="header" data-position="fixed" >
+				<h1> <a href="index.html">AVF App</a></h1>
+			</div>
+			
+			<div data-role="content">
+				<p> <a href="#instagram" data-role="button" >View Instagram Feed</a></p>
+				<p> <a href="#weather" data-role="button" >View Weather Feed</a> </p>
+                <p> <a href="#location" data-role="button" >Get My Location</a> </p>
+                <p> <a href="#picture" data-role="button" >Take a Picture</a> </p>
+                <p> <a href="#connection" data-role="button" >Are you connected?</a> </p>
+                <p> <a href="#device" data-role="button" >Get Your Device Info</a> </p>
+			
+            
+           </div>
+        
+		
+			<div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#main" class="ui-btn-active">home</a></li>
+						<li><a href="#instagram" >instagram</a></li>
+                        <li><a href="#weather" >weather</a></li>
+                        <li><a href="#location" >location</a></li>
+                        <li><a href="#picture" >picture</a></li>
+                        <li><a href="#connection" >connection</a></li>
+                        <li><a href="#device" >device</a></li>
+						<li><a href="#about">about</a></li>
+					</ul>
+				</div>   
+			</div>
+		</div>	
+		
+<!-- Instagram Page -->
+		<div data-role="page" id="instagram" >
+        	<div data-role="header" data-position="fixed" >
+				<h1> <a href="index.html">AVF App</a></h1>
+			</div>
+			
+			 <div data-role="content">
+                
+				<div id="data-msg"><h2>Searching Instagram ...</h2></div>
+                <ul id="data-output">
+                	
+                </ul>
+                
+			</div>
+            
+            
+		
+			<div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#main" >home</a></li>
+						<li><a href="#instagram" class="ui-btn-active">instagram</a></li>
+                        <li><a href="#weather" >weather</a></li>
+                        <li><a href="#location" >location</a></li>
+                        <li><a href="#picture" >picture</a></li>
+                        <li><a href="#connection" >connection</a></li>
+                        <li><a href="#device" >device</a></li>
+						<li><a href="#about">about</a></li>
+					</ul>
+				</div>   
+			</div>
+		</div>	
+        
+        
+        
+<!-- Weather Page -->
+		<div data-role="page" id="weather" >
+        	<div data-role="header" data-position="fixed" >
+				<h1> <a href="index.html">AVF App</a></h1>
+			</div>
+			
+			 <div data-role="content">
+				
+                <div id="weatheroutput"></div>
+                
+			</div>
+            
+            
+        
+		
+			<div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#main" >home</a></li>
+						<li><a href="#instagram" >instagram</a></li>
+                        <li><a href="#weather" class="ui-btn-active">weather</a></li>
+                        <li><a href="#location" >location</a></li>
+                        <li><a href="#picture" >picture</a></li>
+                        <li><a href="#connection" >connection</a></li>
+                        <li><a href="#device" >device</a></li>
+						<li><a href="#about">about</a></li>
+					</ul>
+				</div>   
+			</div>
+		</div>	        
+        
+
+<!-- Location Page -->
+		<div data-role="page" id="location" >
+        	<div data-role="header" data-position="fixed" >
+				<h1> <a href="index.html">AVF App</a></h1>
+			</div>
+			
+			 <div data-role="content">
+				
+                <div id="geolocationdata">
+					<img id="showmap" style="display:none;width:600px;height:600px;" src=""></img>
+				</div>
+				
+                
+			</div>
+            
+            
+        
+		
+			<div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#main" >home</a></li>
+						<li><a href="#instagram" >instagram</a></li>
+                        <li><a href="#weather" >weather</a></li>
+                        <li><a href="#location" class="ui-btn-active">location</a></li>
+                        <li><a href="#picture" >picture</a></li>
+                        <li><a href="#connection" >connection</a></li>
+                        <li><a href="#device" >device</a></li>
+						<li><a href="#about">about</a></li>
+					</ul>
+				</div>   
+			</div>
+		</div>	          
+        
+<!-- Picture Page -->
+		<div data-role="page" id="picture" >
+        	<div data-role="header" data-position="fixed" >
+				<h1> <a href="index.html">AVF App</a></h1>
+			</div>
+			
+			 <div data-role="content">
+				
+                <img id="myImage" style="display:none;width:960px;height:640px;" src="" />
+				
+            
+                
+			</div>
+            
+            
+        
+		
+			<div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#main" >home</a></li>
+						<li><a href="#instagram" >instagram</a></li>
+                        <li><a href="#weather" >weather</a></li>
+                        <li><a href="#location" >location</a></li>
+                        <li><a href="#picture" class="ui-btn-active">picture</a></li>
+						<li><a href="#connection" >connection</a></li>
+                        <li><a href="#device" >device</a></li>
+                        <li><a href="#about">about</a></li>
+					</ul>
+				</div>   
+			</div>
+		</div>	             
+        
+    
+<!-- connection Page -->
+		<div data-role="page" id="connection" >
+        	<div data-role="header" data-position="fixed" >
+				<h1> <a href="index.html">AVF App</a></h1>
+			</div>
+			
+			 <div data-role="content">
+				
+               <div id="connectionoutput"></div>
+                
+			</div>
+            
+            
+        
+		
+			<div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#main" >home</a></li>
+						<li><a href="#instagram" >instagram</a></li>
+                        <li><a href="#weather" >weather</a></li>
+                        <li><a href="#location" >location</a></li>
+                        <li><a href="#picture" >picture</a></li>
+                        <li><a href="#connection" class="ui-btn-active">connection</a></li>
+                        <li><a href="#device" >device</a></li>
+						<li><a href="#about">about</a></li>
+					</ul>
+				</div>   
+			</div>
+		</div>	                    
+        
+        
+<!-- Device Page -->
+		<div data-role="page" id="device" >
+        	<div data-role="header" data-position="fixed" >
+				<h1> <a href="index.html">AVF App</a></h1>
+			</div>
+			
+    		<div data-role="content">
+				
+                <div id="devicewindow">
+                   <div id="deviceinfo"><h2>Loading device info...</h2></div>
+                </div>
+			</div>
+            
+            
+            <div data-role="footer" data-position="fixed" >
+                <div data-role="navbar">
+					<ul>
+						<li><a href="#main" >home</a></li>
+						<li><a href="#instagram" >instagram</a></li>
+                        <li><a href="#weather" >weather</a></li>
+                        <li><a href="#location" >location</a></li>
+                        <li><a href="#picture" >picture</a></li>
+                        <li><a href="#connection" >connection</a></li>
+                        <li><a href="#device" class="ui-btn-active">device</a></li>
+						<li><a href="#about">about</a></li>
+					</ul>
+				</div>   
+			</div>
+		</div>
+        
+        
+<!-- About Page --> 		
+		
+		<div data-role="page" id="about" data-add-back-btn="true" >
+			<div data-role="header" data-position="fixed" >
+				<h1> <a href="index.html">AVF App </a></h1>
+			</div>
+				<div data-role="content">
+					<div data-role="collapsible-set">
+						<div data-role="collapsible" data-collapsed="true">
+							<h3>Author</h3>
+							<p>Greg Koenig - AVF 1308</p>
+						</div>
+						<div data-role="collapsible" data-collapsed="true">
+							<h3>Git</h3>
+							<p><a href="https://github.com/r34744/avfnew.git"> GitHub </a></p>
+						</div>
+						<div data-role="collapsible" data-collapsed="true">
+							<h3>Live Site</h3>
+							<p><a href="http://r34744.github.io/avfnew/DemoAppPage/gkoenigavf1308.html"> GitHub LIVE </a></p>
+						</div>
+					</div>
+				</div>
+			<div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#main" class="ui-btn-active">home</a></li>
+						<li><a href="#instagram" >instagram</a></li>
+                        <li><a href="#weather" >weather</a></li>
+                        <li><a href="#location" >location</a></li>
+                        <li><a href="#picture" >picture</a></li>
+                        <li><a href="#connection" >connection</a></li>
+                        <li><a href="#device" >device</a></li>
+						<li><a href="#about" class="ui-btn-active">about</a></li>
+					</ul>
+				</div>   
+			</div>
+        
+		</div>
+		
+	<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+        <script src="js/jquery.js"></script>
+		<script src="js/jquery.mobile-1.3.1.js"></script>
+		<script src="js/libs/jquery.validate.min.js"></script>
+		<script src="js/main.js"></script>	   
+    </body>
+    
+</html>

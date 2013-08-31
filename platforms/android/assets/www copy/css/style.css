@@ -1,0 +1,26 @@
+/* Greg Koenig ASD 1305
+*/
+#fromLocalStorage{
+    background-color: rgb(255,255,255);
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+    border-radius:15px;
+    /*width: 100%;*/
+    
+}
+#fromJSON{
+    background-color: rgb(255,255,255);
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+    border-radius:15px;
+    /*width: 100%;*/
+    
+}
+#fromOther{
+    background-color: rgb(255,255,255);
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+    border-radius:15px;
+    /*width: 100%;*/
+    
+}
